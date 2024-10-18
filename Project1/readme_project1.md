@@ -8,5 +8,7 @@ This basic tutorial will show you how to create one in Visual Studio.
   - Knowing how to create a C# project in Visual Studio with .Net 8
   - Knowing how to execute the program
   - Analyze the project structure and basic configuration
+
+https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio?pivots=dotnet-8-0
 # Call me with any questions!
 # Next up we'll code something for real
