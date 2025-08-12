@@ -1,7 +1,8 @@
-# You're making PROGRESS!
-## Nice - Let's get to work  
+# Nice - You're making PROGRESS!
+## Let's get to work  
 
-To do our next exercise, I have to show you lists in C#, they're kind of like ArrayLists in Java, or Lists for that matter 😁 (I don't remember java well)
+To do our next exercise, I have to show you lists in C# 
+They're a type of object collection.
 
 ### Lists
 1. #### Instantiating a new List looks like this:  
@@ -77,3 +78,4 @@ class Program
 ```
 
 ## Now show me what you can do and try your own!
+Don't forget to ping me in the chat if you have feedback or questions! <a href='https://github.com/justinprogdev/CSharpMentoring/discussions'>-Discussion <---------</a>
