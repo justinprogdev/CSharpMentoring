@@ -55,6 +55,6 @@ Git is a tool that helps you manage your code and track changes. Let's install i
 
 # FINALLY, we're ready to code. 
 Head over to the Project1 Folder and read the readme for project1!  
-Happy coding Aziz
+Happy coding friends!
 
 
