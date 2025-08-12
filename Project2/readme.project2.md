@@ -1,8 +1,8 @@
-# Hey Aziz!  
-## We're ready for something real huh??  
+# Hey you!  
+## You ready for something real??  
 Ok, we're gonna start coding. Follow along with this video. Bob is good. 
 - His setup may look older than yours, but the code will work the same. 
-- Follow basic variable names and control flow to get the hang of coding C# syntax in Visual Studio.
+- Follow basic variable names and control flow to get the hang of coding C# syntax in Visual Studio. 
 
 ## Open your Visual Studio and follow along
 <a href="https://learn.microsoft.com/en-us/shows/csharp-fundamentals-for-absolute-beginners/understanding-data-types-and-variables">>>Video Lesson 1<<</a>
@@ -14,4 +14,5 @@ I know it is kind of basic, but watch these next few videos for a quick refreshe
 <a href="https://learn.microsoft.com/en-us/shows/csharp-fundamentals-for-absolute-beginners/working-with-dates-and-times">>>Video Lesson 4 For Loops<<</a>
 
 Ok, you're ready for some <i>real</i> fun. 
+
 Head to Project 3!
