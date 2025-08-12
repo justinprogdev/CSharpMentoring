@@ -1,5 +1,7 @@
+# Questions or wanna contact me? 
+<a href='https://github.com/justinprogdev/CSharpMentoring/discussions/1'>Ping me here!</a>
 # Hello World!  
-Yes, you've seen this before. But I have to show you the **Console Application**.  
+Yes, I know you've probably seen this before. But I have to show you the **Console Application**.
 
 ## The Console Application is the black terminal window that runs most programs behind the scenes (yes even websites, desktop apps and more).   
 This basic tutorial will show you how to create one in Visual Studio. 
@@ -10,5 +12,5 @@ This basic tutorial will show you how to create one in Visual Studio.
   - Analyze the project structure and basic configuration
 
 https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio?pivots=dotnet-8-0
-# Ping me in chat if you need me! <a href='https://github.com/justinprogdev/CSharpMentoring/discussions/1'>->Discussions</a>
-# Next up we'll code something for real
+
+#Get through this and move on to #2!
