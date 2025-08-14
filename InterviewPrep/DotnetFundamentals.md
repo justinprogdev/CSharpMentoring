@@ -1,4 +1,4 @@
-# 1. C# & .NET Core Concepts
+# 1. **C# & .NET Core Concepts**
 
 ## Value Types vs Reference Types
 
@@ -21,7 +21,7 @@
 
 ---
 
-# 2. **Common OOP Questions**
+# 2. **OOP Concepts in C#**
 
 ### Encapsulation
 
@@ -57,6 +57,8 @@
 
 ---
 
+# 3. **C# Language Features & Type Behavior**
+
 ### Structs vs Classes
 
 - **Structs** are value types, **classes** are reference types.
@@ -82,7 +84,7 @@
 
 ---
 
-# 3. **Application Design & Architecture**
+# 4. **Application Design & Architecture**
 
 ### ASP.NET Core Request Pipeline
 
@@ -97,7 +99,29 @@
 - Injects dependencies instead of creating them manually.
 - Promotes **testability**, **modularity**, and **inversion of control**.
 - Use built-in DI in ASP.NET Core for services and repositories.
+- ASP.NET Core defines **three main service lifetimes**:
 
+  - **Transient**  
+    - A new instance is created **every time** it’s requested.  
+    - Use for **lightweight**, stateless services.
+    - Example: `services.AddTransient<IMyService, MyService>()`
+
+  - **Scoped**  
+    - One instance per **HTTP request**.  
+    - Shared across that request's pipeline (e.g., controllers, middleware).
+    - Example: `services.AddScoped<IMyService, MyService>()`
+
+  - **Singleton**  
+    - A **single instance** is created the first time it's requested and **shared for the application's lifetime**.  
+    - Be careful with **stateful** or request-specific data — not safe to use `DbContext` here.
+    - Example: `services.AddSingleton<IMyService, MyService>()`
+
+- **Gotcha**: Injecting a `Scoped` service into a `Singleton` will throw an error — or worse, behave unpredictably. Use `IServiceScopeFactory` when needed.
+
+- **Real-world analogy**:  
+  - Transient: a new disposable coffee cup  
+  - Scoped: your personal cup for the day  
+  - Singleton: the office coffee machine
 ---
 
 ### MVC vs Minimal APIs
@@ -124,7 +148,7 @@
 
 ---
 
-# 4. **Data & Persistence**
+# 5. **Data & Persistence**
 
 ### Entity Framework Core Basics
 
@@ -149,7 +173,7 @@
 
 ---
 
-# 5. **Asynchronous Programming**
+# 6. **Asynchronous Programming**
 
 ### async / await
 
@@ -173,7 +197,7 @@
 
 ---
 
-# 6. **Error Handling & Reliability**
+# 7. **Error Handling & Reliability**
 
 ### Exception Handling Flow
 
@@ -190,7 +214,7 @@
 
 ---
 
-# 7. **Performance & Memory**
+# 8. **Performance & Memory**
 
 ### Garbage Collection in .NET
 
@@ -214,7 +238,7 @@
 
 ---
 
-# 8. **Testing & Quality**
+# 9. **Testing & Quality**
 
 ### Unit Testing Philosophy
 
