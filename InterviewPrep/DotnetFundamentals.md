@@ -1,3 +1,5 @@
+```Disclosure: I used ChatGPT for formatting and a bunch of boilerplate. I told it exactly what to include. I prepare on this same set of topics with every .Net interview.```
+
 # 1. **C# & .NET Core Concepts**
 
 ## Value Types vs Reference Types
@@ -17,7 +19,7 @@
 - **Assignment behavior**: When you assign one reference to another, you're copying the **reference**, not the data — both now point to the same object.
 - **Reference semantics**: Changes made via one variable are reflected in the other, because they're both referencing the **same object**.
 - Don't overthink “stack vs heap” — it’s a helpful mental model, but in practice, the **CLR may optimize** where things are stored.
-- **Gotcha**: Be ready to explain how this differs from **value types**, especially when passed into methods — reference types preserve changes made inside the method.
+- `Gotcha`: Be ready to explain how this differs from **value types**, especially when passed into methods — reference types preserve changes made inside the method.
 
 ---
 
@@ -29,22 +31,21 @@
 - Achieved via access modifiers (`private`, `public`, etc.).
 - **Real-world analogy**: A remote control — you press a button, but don’t need to know the circuitry inside.
 
-### Inheritance
+### Inheritance "Is-A Relationship"
 
 - Allows a class to inherit members from a base class.
 - Promotes reuse and logical hierarchy.
-- **Real-world analogy**: A `Car` class inherited by `Sedan`, `Truck`, `SUV`.
+- **Real-world analogy**: A `Car` class inherited by `Sedan`, `Carrera`, `Coupe`. The Coupe `IS A Car`
 
 ### Polymorphism
 
 - Ability for different types to be treated as the same base type.
 - Achieved through method overriding or interface implementation.
-- **Real-world analogy**: A single “Drive” method that behaves differently for `Bike`, `Car`, and `Bus`.
+- **Real-world analogy**: A single “Drive” method that behaves differently for `F1 Car`, `Car`, and `Tractor`.
 
 ### Abstraction
 
 - Hides complex implementation details and shows only essential features.
-- **Real-world analogy**: Using a coffee machine — you just press a button, without knowing the brewing logic.
 
 ---
 
