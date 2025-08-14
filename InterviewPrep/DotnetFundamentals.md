@@ -1,109 +1,239 @@
 # 1. C# & .NET Core Concepts
 
-## **Value Types vs Reference Types — Interview Summary**
+## Value Types vs Reference Types
 
-**Value types**
+### Value Types
 
-  - Store data directly where declared (often on the stack).
-  - Examples: `int`, `double`, `bool`, `DateTime`, `struct`.
-  - Copied when assigned — changes to one copy don’t affect the other.
+- Store data **directly** where they are declared — typically on the **stack**.
+- Examples: `int`, `double`, `bool`, `DateTime`, `struct`
+- When assigned or passed to a method, a **copy** of the data is made.
+- Changes to one copy do **not** affect the other.
+- Useful for small, immutable data.
 
-**Reference types**
+### Reference Types
 
-  - Store a reference on the stack pointing to data on the heap.
-  - Examples: `string`, `object`, `class`, `array`.
-  - Assigned by reference — multiple variables can point to the same object in memory.  
-  - **Key difference** → **Copy semantics vs reference semantics**, not strictly stack vs heap.
-  - Stack/heap explanation is a common mental model, but the CLR may optimize storage.
+- A **reference type variable** holds a **pointer** to the object’s actual data — usually stored on the **heap**.
+- Examples: `string`, `object`, `class`, `array`, `interface`, `delegate`
+- **Assignment behavior**: When you assign one reference to another, you're copying the **reference**, not the data — both now point to the same object.
+- **Reference semantics**: Changes made via one variable are reflected in the other, because they're both referencing the **same object**.
+- Don't overthink “stack vs heap” — it’s a helpful mental model, but in practice, the **CLR may optimize** where things are stored.
+- **Gotcha**: Be ready to explain how this differs from **value types**, especially when passed into methods — reference types preserve changes made inside the method.
 
-**Common OOP Questions**
+---
 
-1. Explain encapsulation, inheritance, polymorphism, abstraction — and give a small real-world analogy for each.
-   
-2. Interfaces vs abstract classes - When to use one vs the other, and the impact on flexibility and testability.
-   
-3. Structs vs classes - Differences in behavior, performance, and use cases.
-   
-5. var vs explicit types - Pros, cons, concerns?
-   
-6. Boxing and unboxing - What it is, when it happens, and performance implications.
+# 2. **Common OOP Questions**
 
-# 2. Application Design & Architecture
+### Encapsulation
 
-- ASP.NET Core Request Pipeline
-  How middleware works, and the lifecycle of a request.
+- Hides internal state and behavior; exposes only what’s necessary.
+- Achieved via access modifiers (`private`, `public`, etc.).
+- **Real-world analogy**: A remote control — you press a button, but don’t need to know the circuitry inside.
 
-- Dependency Injection
-  Why DI is used, and what benefits it gives in maintainability and testing.
+### Inheritance
 
-- MVC vs Minimal APIs
-  Strengths, trade-offs, and typical use cases.
+- Allows a class to inherit members from a base class.
+- Promotes reuse and logical hierarchy.
+- **Real-world analogy**: A `Car` class inherited by `Sedan`, `Truck`, `SUV`.
 
-- REST API Design 
-  HTTP verbs, status codes, and why consistency matters.
+### Polymorphism
 
-- Common Design Patterns in .NET
-  Repository, Singleton, Factory — when each makes sense.
+- Ability for different types to be treated as the same base type.
+- Achieved through method overriding or interface implementation.
+- **Real-world analogy**: A single “Drive” method that behaves differently for `Bike`, `Car`, and `Bus`.
 
-# 3. Data & Persistence
+### Abstraction
 
-- Entity Framework Core basics
-  How EF Core maps objects to database tables.
+- Hides complex implementation details and shows only essential features.
+- **Real-world analogy**: Using a coffee machine — you just press a button, without knowing the brewing logic.
 
-- Eager vs Lazy Loading
-  How they differ, and when to use one over the other.
+---
 
-- IEnumerable vs IQueryable
-  Execution differences, and why it matters for performance.
+### Interfaces vs Abstract Classes
 
-# 4. Asynchronous Programming
+- **Interface**: Contract with no implementation; allows multiple inheritance.
+- **Abstract class**: Base with some shared implementation; single inheritance.
+- Use **interfaces** for capabilities, and **abstract classes** when sharing code.
+- Interfaces make **unit testing and mocking** easier.
 
-- async / await
-  What problem it solves and how it works conceptually.
+---
 
-- Tasks vs Threads
-  Differences in purpose and overhead.
+### Structs vs Classes
 
-- I/O-bound vs CPU-bound operations
-  Which async applies to, and why.
+- **Structs** are value types, **classes** are reference types.
+- Structs are better for small, immutable data.
+- Classes offer more flexibility and inheritance.
+- Avoid large or mutable structs — copying can hurt performance.
 
-# 5. Error Handling & Reliability
+---
 
-- Exception handling flow
-  How try/catch/finally works and when to create custom exceptions.
+### var vs Explicit Types
 
-- Logging strategies
-  Importance of logging levels and structured logging.
+- `var` enables type inference at compile-time.
+- Use `var` when the type is **obvious**; use explicit types for clarity or when code readability matters.
+- Avoid `var` when the type is ambiguous or impacts understanding.
 
-# 6. Performance & Memory
+---
 
-- Garbage Collection in .NET
-  What it does, when it runs, and common misconceptions.
+### Boxing and Unboxing
 
-- IDisposable & using
-  Why deterministic disposal matters.
+- **Boxing**: Converting a value type to an object/reference type.
+- **Unboxing**: Extracting the value type back from the object.
+- Costly in terms of performance — avoid in tight loops or performance-critical paths.
 
-- Caching
-  Types of caching and when to use them.
+---
 
-# 7. Testing & Quality
+# 3. **Application Design & Architecture**
 
-- Unit Testing Philosophy
-  Why we test, what to test vs not test.
+### ASP.NET Core Request Pipeline
 
-- Mocking in Tests
-  What mocking solves, and when it’s overkill.
+- Built from **middleware** components.
+- Each middleware can **handle**, **modify**, or **pass on** the request.
+- Request → Middleware A → B → C → Response
 
-- Testable Architecture
-  How DI and clean separation of concerns help testing.
+---
 
-# 8. Behavioral & Experience-Based
+### Dependency Injection (DI)
 
-- Refactoring Experience
-  Be ready to describe a time you improved legacy code.
+- Injects dependencies instead of creating them manually.
+- Promotes **testability**, **modularity**, and **inversion of control**.
+- Use built-in DI in ASP.NET Core for services and repositories.
 
-- System Design Trade-offs
-  How you balance scalability, readability, and maintainability.
+---
 
-- Team Collaboration
-  How you’ve explained technical concepts to non-technical stakeholders.
+### MVC vs Minimal APIs
+
+- **MVC**: Best for full-featured apps with views and controllers.
+- **Minimal APIs**: Great for lightweight APIs and microservices.
+- Trade-offs in flexibility, startup time, and complexity.
+
+---
+
+### REST API Design
+
+- Use standard HTTP verbs (`GET`, `POST`, `PUT`, `DELETE`).
+- Return appropriate status codes (e.g., `200`, `404`, `500`).
+- Keep resource URIs consistent and intuitive.
+
+---
+
+### Common Design Patterns in .NET
+
+- **Repository**: Abstracts data access logic.
+- **Singleton**: Ensures a class has only one instance.
+- **Factory**: Creates objects without specifying exact types.
+
+---
+
+# 4. **Data & Persistence**
+
+### Entity Framework Core Basics
+
+- ORM that maps C# objects to database tables.
+- Supports migrations, LINQ queries, and change tracking.
+
+---
+
+### Eager vs Lazy Loading
+
+- **Eager**: Loads related data upfront with `.Include()`.
+- **Lazy**: Loads related data when accessed.
+- Be cautious — lazy loading can cause **N+1 query issues**.
+
+---
+
+### IEnumerable vs IQueryable
+
+- `IEnumerable`: In-memory iteration; executes queries immediately.
+- `IQueryable`: Composable; queries translated to SQL and executed at DB level.
+- Use `IQueryable` for database queries to optimize performance.
+
+---
+
+# 5. **Asynchronous Programming**
+
+### async / await
+
+- Simplifies asynchronous code; avoids blocking threads.
+- `await` unwraps the result of a `Task` without blocking.
+
+---
+
+### Tasks vs Threads
+
+- `Task`: Abstraction over work that may run concurrently.
+- `Thread`: Lower-level, manual control over execution.
+- Prefer `Task` for most async I/O operations.
+
+---
+
+### I/O-bound vs CPU-bound
+
+- **I/O-bound**: Use `async`/`await` — waiting on external resources (files, network).
+- **CPU-bound**: Use `Task.Run` to offload heavy computation.
+
+---
+
+# 6. **Error Handling & Reliability**
+
+### Exception Handling Flow
+
+- Use `try/catch/finally` to manage exceptions.
+- Don’t swallow exceptions — log or handle them meaningfully.
+- Create **custom exceptions** for domain-specific errors.
+
+---
+
+### Logging Strategies
+
+- Use structured logging (`Serilog`, `ILogger`) with levels: `Info`, `Warning`, `Error`, etc.
+- Logs help trace issues and support observability in production.
+
+---
+
+# 7. **Performance & Memory**
+
+### Garbage Collection in .NET
+
+- Automatically reclaims memory from unused objects.
+- Runs in **generations** (Gen 0, 1, 2) to optimize frequency.
+- Avoid holding onto references longer than needed.
+
+---
+
+### IDisposable & using
+
+- Use `IDisposable` for unmanaged resources (e.g., files, streams).
+- `using` ensures deterministic disposal, even in exceptions.
+
+---
+
+### Caching
+
+- Use memory or distributed cache (`IMemoryCache`, `IDistributedCache`) to reduce DB load.
+- Cache only what's safe to reuse and update appropriately.
+
+---
+
+# 8. **Testing & Quality**
+
+### Unit Testing Philosophy
+
+- Focus on small, isolated units of logic.
+- Don’t test third-party libraries or frameworks.
+- Tests are documentation and safety nets.
+
+---
+
+### Mocking in Tests
+
+- Replace real dependencies with fakes/mocks.
+- Tools: `Moq`, `NSubstitute`, `FakeItEasy`
+- Avoid over-mocking — focus on behavior over implementation.
+
+---
+
+### Testable Architecture
+
+- Use DI to inject dependencies.
+- Follow SOLID principles to make code modular and test-friendly.
+- Separate concerns into layers (e.g., services, repositories, controllers).
